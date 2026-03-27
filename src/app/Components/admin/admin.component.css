@@ -1,0 +1,29 @@
+.custom-card {
+  background-color: #fdf6ec; /* beige */
+  border-radius: 12px;
+}
+
+.title {
+  color: #008080;
+  font-weight: bold;
+}
+
+.custom-input {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.btn-teal {
+  background-color: #008080;
+  color: white;
+  border-radius: 8px;
+}
+
+.btn-teal:hover {
+  background-color: #006666;
+}
+
+.btn-cancel {
+  background-color: #ddd;
+  border-radius: 8px;
+}

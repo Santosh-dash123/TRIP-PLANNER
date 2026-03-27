@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="card custom-card p-4 shadow-lg">
+    <h3 class="mb-4 title">Add Expense</h3>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Item Type</label>
+        <select
+          class="form-select custom-input"
+          [(ngModel)]="expense.ItemTypeId"
+          name="itemType"
+        >
+          <option value="0">-- Select Type --</option>
+          <option *ngFor="let t of itemTypes" [value]="t.id">
+            {{ t.type_name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Item Name</label>
+        <input
+          type="text"
+          class="form-control custom-input"
+          [(ngModel)]="expense.ItemName"
+          name="itemName"
+        />
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Amount</label>
+        <input
+          type="number"
+          class="form-control custom-input"
+          [(ngModel)]="expense.Amount"
+          name="amount"
+        />
+      </div>
+    </div>
+
+    <div class="text-end mt-3">
+      <button class="btn btn-teal me-2" (click)="saveExpenses()">
+        Save Expense
+      </button>
+      <button class="btn btn-cancel">Cancel</button>
+    </div>
+  </div>
+</div>

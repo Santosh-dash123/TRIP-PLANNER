@@ -1,0 +1,150 @@
+<div class="container mt-4">
+  <div class="card custom-card p-4 shadow-lg">
+    <h3 class="mb-4 title">Create Trip</h3>
+
+    <!-- Trip Details -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Trip Name</label>
+        <input
+          type="text"
+          class="form-control custom-input"
+          [(ngModel)]="trip.TripName"
+          name="tripName"
+        />
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Location</label>
+        <input
+          type="text"
+          class="form-control custom-input"
+          [(ngModel)]="trip.Location"
+          name="location"
+        />
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Trip Date</label>
+        <input
+          type="date"
+          class="form-control custom-input"
+          [(ngModel)]="trip.TripDate"
+          name="tripDate"
+        />
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Add Member -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="section-title">Members</h5>
+      <button class="btn btn-teal btn-sm" (click)="addMemberRow()">
+        + Add Member
+      </button>
+    </div>
+
+    <!-- Dynamic Table -->
+    <div class="table-responsive">
+      <table class="table custom-table text-center">
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let m of members; let i = index">
+            <td>{{ i + 1 }}</td>
+
+            <td>
+              <input
+                class="form-control custom-input"
+                [(ngModel)]="m.Name"
+                [disabled]="!m.isEdit"
+                name="name{{ i }}"
+              />
+            </td>
+
+            <td>
+              <input
+                class="form-control custom-input"
+                [(ngModel)]="m.Email"
+                [disabled]="!m.isEdit"
+                name="email{{ i }}"
+              />
+            </td>
+
+            <td>
+              <input
+                class="form-control custom-input"
+                [(ngModel)]="m.Address"
+                [disabled]="!m.isEdit"
+                name="address{{ i }}"
+              />
+            </td>
+
+            <td>
+              <select
+                class="form-select custom-input"
+                [(ngModel)]="m.Role"
+                [disabled]="!m.isEdit"
+                name="role{{ i }}"
+              >
+                <option value="Admin">Admin</option>
+                <option value="Member">Member</option>
+              </select>
+            </td>
+
+            <td>
+              <!-- Edit -->
+              <button
+                *ngIf="!m.isEdit"
+                class="btn btn-warning btn-sm me-1"
+                (click)="editMemberRow(i)"
+              >
+                ✏️
+              </button>
+
+              <!-- Update -->
+              <button
+                *ngIf="m.isEdit"
+                class="btn btn-success btn-sm me-1"
+                (click)="updateMemberRow(i)"
+              >
+                ✔️
+              </button>
+
+              <!-- Delete -->
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteMemberRow(i)"
+              >
+                🗑️
+              </button>
+            </td>
+          </tr>
+
+          <!-- Empty State -->
+          <tr *ngIf="members.length === 0">
+            <td colspan="6" class="text-muted">No members added yet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Buttons -->
+    <div class="text-end mt-3">
+      <button class="btn btn-teal me-2" (click)="createTrip()">
+        Create Trip
+      </button>
+      <button class="btn btn-cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.custom-card {
+  background-color: #fdf6ec; /* beige */
+  border-radius: 12px;
+}
+
+.title {
+  color: #008080;
+  font-weight: bold;
+}
+
+.custom-table th {
+  background-color: #008080;
+  color: white;
+}
+
+.custom-table td {
+  vertical-align: middle;
+}
+
+.total-box {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.total-amount {
+  color: #008080;
+  font-weight: bold;
+  font-size: 18px;
+}

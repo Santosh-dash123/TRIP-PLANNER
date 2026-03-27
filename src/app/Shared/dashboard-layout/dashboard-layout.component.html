@@ -1,0 +1,34 @@
+<div class="d-flex">
+  <div class="sidebar">
+    <h4 class="logo">TripPlanner</h4>
+
+    <ul class="menu">
+      <li><a routerLink="/dashboardlayout/home">🏠 Home</a></li>
+
+      <li *ngIf="role === 'SuperAdmin'">
+        <a routerLink="/dashboardlayout/superadmin">Add Trip</a>
+      </li>
+
+      <li *ngIf="role === 'Admin'">
+        <a routerLink="/dashboardlayout/admin">Add Expense</a>
+        <a routerLink="/dashboardlayout/member">Show Expense</a>
+      </li>
+
+      <li *ngIf="role === 'Member'">
+        <a routerLink="/dashboardlayout/member">Show Expense</a>
+      </li>
+    </ul>
+
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <div class="main-content">
+    <div class="card-ui">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- <footer class="footer text-center">
+      <p>Developed By <span>Odisha IT Learner</span> 🚀</p>
+    </footer> -->
+  </div>
+</div>

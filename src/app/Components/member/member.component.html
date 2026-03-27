@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <div class="card custom-card p-4 shadow-lg">
+    <h3 class="title mb-3">Trip Expense Summary</h3>
+    <div class="d-flex justify-content-end mb-3">
+      <button class="btn btn-danger me-2" (click)="downloadPDF()">
+        Download PDF
+      </button>
+    </div>
+    <div id="pdfContent">
+      <div class="table-responsive">
+        <table class="table custom-table text-center">
+          <thead>
+            <tr>
+              <th>Sl No</th>
+              <th>Trip Name</th>
+              <th>Item Name</th>
+              <th>Item Type</th>
+              <th>Total Amount</th>
+              <th>Total Members</th>
+              <th>Per Person Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of summaryList; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ item.tripName }}</td>
+              <td>{{ item.itemName }}</td>
+              <td>{{ item.itemType }}</td>
+              <td>₹ {{ item.amount }}</td>
+              <td>{{ item.totalMembers }}</td>
+              <td class="fw-bold text-success">₹ {{ item.perPersonAmount }}</td>
+              <td>{{ item.created_At | date: "shortDate" }}</td>
+            </tr>
+
+            <tr *ngIf="summaryList.length === 0">
+              <td colspan="8" class="text-muted">No data available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="total-box mt-3 text-end">
+        <h5>
+          Total Value To Pay :
+          <span class="total-amount">₹ {{ totalPayable }}</span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
